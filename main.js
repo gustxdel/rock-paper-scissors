@@ -1,8 +1,15 @@
+let scorePlayer = 0;
+let scoreComputer = 0;
+const win = "win";
+const lose = "lose";
+const tie = "tie";
 
-let playerSelection = "Rock";
+let playerSelection = prompt("Rock Paper Scissors go!");
+playerSelection = playerSelection[0].toUpperCase() + playerSelection.substring(1);
 let computerSelection = getComputerChoice();
 
-console.log(playRound(playerSelection, computerSelection) );
+
+console.log(games());
 
 // Function to play round...............................//
 function playRound(playerSelection, computerSelection) {
@@ -47,6 +54,31 @@ function playRound(playerSelection, computerSelection) {
     return answer;
 }
 
+//Function to play 5 round game..........................//
+function games() {
+    let winner;
+    for (let i = 0; i < 5; i++) {
+        let game = playRound(playerSelection, computerSelection);
+        if (game.includes(win)) {
+            scorePlayer += 1;
+            console.log(game);
+        } 
+        else if (game.includes(lose)) {
+            scoreComputer += 1;
+            console.log(game);
+        }
+        else {
+            console.log(game);
+        }
+    }
+    if (scorePlayer > scoreComputer) {
+        winner = "You win!";
+    }
+    else {
+        winner = "You lose!";
+    }
+    return winner;
+}
 
 
 // Helper Functions...............//
