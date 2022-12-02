@@ -4,12 +4,8 @@ const win = "win";
 const lose = "lose";
 const tie = "tie";
 
-let playerSelection = prompt("Rock Paper Scissors go!");
-playerSelection = playerSelection[0].toUpperCase() + playerSelection.substring(1);
-let computerSelection = getComputerChoice();
-
-
 console.log(games());
+console.log(scorePlayer +" to " + scoreComputer);
 
 // Function to play round...............................//
 function playRound(playerSelection, computerSelection) {
@@ -58,18 +54,17 @@ function playRound(playerSelection, computerSelection) {
 function games() {
     let winner;
     for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Rock Paper Scissors go!");
+        playerSelection = playerSelection[0].toUpperCase() + playerSelection.substring(1);
+        let computerSelection = getComputerChoice();
         let game = playRound(playerSelection, computerSelection);
-        if (game.includes(win)) {
-            scorePlayer += 1;
-            console.log(game);
+        if (game.includes(win) == true) {
+            scorePlayer++;  
         } 
-        else if (game.includes(lose)) {
-            scoreComputer += 1;
-            console.log(game);
+        else if (game.includes(lose) == true) {
+            scoreComputer++;   
         }
-        else {
-            console.log(game);
-        }
+        console.log(game);
     }
     if (scorePlayer > scoreComputer) {
         winner = "You win!";
